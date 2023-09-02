@@ -265,9 +265,6 @@ module Redmine
                   :html => {:class => 'icon icon-list'}
         menu.push :settings, {:controller => 'settings'},
                   :html => {:class => 'icon icon-settings'}
-        menu.push :ldap_authentication,
-                  {:controller => 'auth_sources', :action => 'index'},
-                  :html => {:class => 'icon icon-server-authentication'}
         menu.push :plugins, {:controller => 'admin', :action => 'plugins'},
                   :last => true,
                   :html => {:class => 'icon icon-plugins'}
