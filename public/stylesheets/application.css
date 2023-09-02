@@ -1905,3 +1905,7 @@ th[role=columnheader]:not(.no-sort):hover:after {
 	display: inline;
 	opacity: 1;
 }
+
+tr.issue.closed > td > a, tr.issue.closed > td.status, tr.issue.closed > td.priority {
+  color: gray;
+}
