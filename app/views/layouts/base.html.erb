@@ -105,6 +105,7 @@
     <div id="sidebar">
         <%= yield :sidebar %>
         <%= view_layouts_base_sidebar_hook_response %>
+        <div><a href="javascript:$('#sidebar').hide();">Close sidebar</a></div>
     </div>
 
     <div id="content">
