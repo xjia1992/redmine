@@ -32,6 +32,7 @@ class AuthSourcesController < ApplicationController
   end
 
   def new
+    raise "Auth sources are disabled"
   end
 
   def create
@@ -44,6 +45,7 @@ class AuthSourcesController < ApplicationController
   end
 
   def edit
+    raise "Auth sources are disabled"
   end
 
   def update
