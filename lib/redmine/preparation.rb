@@ -177,7 +177,7 @@ module Redmine
                   :if => Proc.new {!User.current.logged? && Setting.self_registration?}
         menu.push :my_account, {:controller => 'my', :action => 'account'},
                   :if => Proc.new {User.current.logged?}
-        menu.push :logout, :signout_path, :html => {:method => 'post'},
+        menu.push :logout, '/OIDCRedirectURI?logout=https%3A%2F%2F' + ERB::Util.url_encode(Setting.host_name) + '%2F',
                   :if => Proc.new {User.current.logged?}
       end
 
