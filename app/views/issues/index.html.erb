@@ -78,6 +78,20 @@
 <% end %>
 
 <% content_for :header_tags do %>
+    <script>
+    $(function() {
+      let keys = Object.keys(window.localStorage);
+      for (let key of keys) {
+        if (window.localStorage.getItem(key) !== 'collapsed') {
+          continue;
+        }
+        let el = document.getElementById(key);
+        if (el !== null) {
+          toggleRowGroup(el);
+        }
+      }
+    });
+    </script>
     <%= auto_discovery_link_tag(:atom,
                                 {:query_id => @query, :format => 'atom',
                                  :page => nil, :key => User.current.atom_key},
