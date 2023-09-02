@@ -110,6 +110,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    raise "New user form is disabled"
     @user = User.new(:language => Setting.default_language,
                      :mail_notification => Setting.default_notification_option)
     @user.safe_attributes = params[:user]
@@ -215,6 +216,8 @@ class UsersController < ApplicationController
         format.html {redirect_back_or_default(users_path)}
         format.api  {render_api_ok}
       end
+    else
+      raise "User deletion form is disabled"
     end
   end
 
