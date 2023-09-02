@@ -31,6 +31,11 @@ function toggleRowGroup(el) {
   var tr = $(el).parents('tr').first();
   var n = tr.next();
   tr.toggleClass('open');
+  if (tr.hasClass('open')) {
+    window.localStorage.removeItem(el.id);
+  } else {
+    window.localStorage.setItem(el.id, 'collapsed');
+  }
   $(el).toggleClass('icon-expanded icon-collapsed');
   while (n.length && !n.hasClass('group')) {
     n.toggle();
