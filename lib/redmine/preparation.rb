@@ -177,8 +177,12 @@ module Redmine
                   :if => Proc.new {!User.current.logged? && Setting.self_registration?}
         menu.push :my_account, {:controller => 'my', :action => 'account'},
                   :if => Proc.new {User.current.logged?}
-        menu.push :logout, '/OIDCRedirectURI?logout=https%3A%2F%2F' + ERB::Util.url_encode(Setting.host_name) + '%2F',
-                  :if => Proc.new {User.current.logged?}
+        unless ARGV.include? 'db:migrate'
+          # Setting.host_name needs to query the database, so we need to avoid
+          # calling it during the (initial) migration.
+          menu.push :logout, '/OIDCRedirectURI?logout=https%3A%2F%2F' + ERB::Util.url_encode(Setting.host_name) + '%2F',
+                    :if => Proc.new {User.current.logged?}
+        end
       end
 
       MenuManager.map :application_menu do |menu|
